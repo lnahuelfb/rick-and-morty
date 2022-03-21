@@ -1,0 +1,32 @@
+.container {
+  width: 250px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  margin: 25px;
+}
+
+.img-container {
+  width: 75%;
+}
+
+.img-container img {
+  width: 100%;
+}
+
+.character-data-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.character-data-container p{
+  color: black;
+  padding: 0;
+}
