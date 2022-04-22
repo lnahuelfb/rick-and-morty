@@ -12,3 +12,13 @@
 .nf-container h1 {
   color: white;
 }
+
+@media screen and (max-width: 600px) {
+  .nf-container img {
+    width: 75%;
+  }
+  .nf-container h1 {
+    text-align: center;
+    padding: 0 10px;
+  }
+}
