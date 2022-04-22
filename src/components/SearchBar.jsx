@@ -1,39 +1,44 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { DataContext } from '../context/DataContext';
 import '../styles/SearchBar.css'
 
 export default function SearchBar() {
+  
+  const { setSearch } = useContext(DataContext)
 
-  const [data, setData] = useState({
-    name: ''
-  })
-
-  // const handleSubmit = (data) => {
-
-  // }
+  const [searchValue, setSearchValue] = useState('')
 
   const handleChange = (e) => {
-    setData({
-      name: e.target.value
-    })
+    setSearchValue(e.target.value)
+  }
+
+  const handleClick = (e) => {
+    setSearch(searchValue)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setSearch(searchValue)
   }
 
   return (
-    <div className='search-bar-container'>
+    <form className='search-bar-container' onSubmit={(e) => handleSubmit(e)}>
       <input
         type="text"
         placeholder='Nombre de personaje'
-        value={data.name}
+        value={searchValue}
         name='name'
-        onChange={handleChange}
         className='input'
+        onChange={(e) => handleChange(e)}
       />
       <button
         type="button"
         className='button'
         placeholder='Buscar'
+        onClick={(e) => handleClick(e)}
       >
         Buscar
       </button>
-    </div>
+    </form>
   )
 }

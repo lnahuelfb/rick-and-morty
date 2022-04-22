@@ -8,14 +8,15 @@ export default function Card({data}) {
         <img src={ data.image } alt={ data.name } />
       </div>
       <div className="character-data-container">
-        <p>
+        <div className="info">
           <strong>{data.name}</strong>
           <hr/>
           <strong>Species:</strong> {data.species} <br />
           <strong>Location:</strong> {data.location.name} <br />
           <strong>Gender:</strong> {data.gender} <br />
           <strong>Status:</strong> {data.status} 
-        </p>
+        </div>
+        
       </div>
     </div>
   )

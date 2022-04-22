@@ -1,0 +1,14 @@
+.nf-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nf-container img {
+  width: 50%;
+}
+
+.nf-container h1 {
+  color: white;
+}

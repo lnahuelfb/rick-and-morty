@@ -9,6 +9,7 @@ import WhatsApp from './images/WhatsApp.svg'
 import GitHub from './images/github.svg'
 import Loading from './components/Loading';
 import Pagination from './components/Pagination';
+import NotFound from './components/NotFound';
 
 function App() {
 
@@ -27,15 +28,29 @@ function App() {
 
       <main>
         <SearchBar />
-        <Pagination next={info.next} prev={info.prev} onPrevious={onPrevious} onNext={onNext} />
+        {
+          info
+            ? <Pagination next={info.next} prev={info.prev} onPrevious={onPrevious} onNext={onNext} />
+            : null
+        }
         <div className="cards-container">
           {
-            data.length <= 0
-              ? <Loading />
-              : data.map(card => <Card key={card.id} data={card} />)
+            data
+              ? data.length < 0
+                ? <Loading />
+                : data.map(card => <Card key={card.id} data={card} />)
+              :
+              <>
+                <NotFound />
+              </>
           }
         </div>
-        <Pagination next={info.next} prev={info.prev} onPrevious={onPrevious} onNext={onNext} />
+
+        {
+          info
+            ? <Pagination next={info.next} prev={info.prev} onPrevious={onPrevious} onNext={onNext} />
+            : null
+        }
       </main>
 
       <footer>
