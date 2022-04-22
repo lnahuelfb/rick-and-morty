@@ -21,12 +21,14 @@
 .character-data-container{
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 100%;
   margin-top: 15px;
+  text-align: start;
 }
 
 .character-data-container p{
   color: black;
+  margin: 0 15px 0 15px;
+  width: 90%;
   padding: 0;
 }

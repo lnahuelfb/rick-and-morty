@@ -46,7 +46,6 @@ p {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-top: 20px;
 }
 
 footer {
@@ -62,4 +61,34 @@ footer {
   width: 55px;
   margin: 15px;
   align-items: flex-end;
+}
+
+@media screen and (max-width: 600px) {
+
+  .logo {
+    width: 200px;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer h3 {
+    padding-top: 25px;
+    margin: 0;
+    width: 100%;
+  }
+
+  .cards-container {
+    width: 100%;
+  }
+
+  .social-icons {
+    width: 20%;
+
+  }
 }

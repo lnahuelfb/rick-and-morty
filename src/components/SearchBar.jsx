@@ -18,7 +18,7 @@ export default function SearchBar() {
   }
 
   return (
-    <div>
+    <div className='search-bar-container'>
       <input
         type="text"
         placeholder='Nombre de personaje'

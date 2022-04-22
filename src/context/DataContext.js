@@ -1,20 +1,45 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 
 export const DataContext = createContext()
-const API = 'https://rickandmortyapi.com/api'
 
 export default function DataProvider({ children }) {
 
-  const [Data, setData] = useState([])
-  const [Loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
+  const [info, setInfo] = useState([])
 
-  const dataAPI = async () => {
-    setLoading(true)
+  const API = 'https://rickandmortyapi.com/api/character/'
 
+  const fetchCharacters = (API) => {
+    fetch(API)
+      .then(res => res.json())
+      .then(data => {
+        setData(data.results)
+        setInfo(data.info)
+      })
+      .catch(error => console.error(error))
+  }
+
+  useEffect(() => {
+    fetchCharacters(API)
+  }, [])
+
+  const onPrevious = () => {
+    fetchCharacters(info.prev)
+  }
+
+  const onNext = () => {
+    fetchCharacters(info.next)
   }
 
   return (
-    <DataContext.Provider value={{ Data, setData }}>
+    <DataContext.Provider value={{
+      data,
+      setData,
+      info,
+      setInfo,
+      onPrevious,
+      onNext
+    }}>
       {children}
     </DataContext.Provider>
   )

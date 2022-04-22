@@ -1,31 +1,47 @@
 import SearchBar from './components/SearchBar';
 import './App.css';
 import logo from './images/rick-and-morty.png'
-import DataProvider from './context/DataContext';
+import { DataContext } from './context/DataContext';
+import { useContext } from 'react';
 import Card from './components/Card';
 import Linkedin from './images/linkedin.svg'
 import WhatsApp from './images/WhatsApp.svg'
 import GitHub from './images/github.svg'
+import Loading from './components/Loading';
+import Pagination from './components/Pagination';
 
 function App() {
 
-  const items = [1, 2, 3, 4, 5, 6]
+  const {
+    data,
+    info,
+    onPrevious,
+    onNext
+  } = useContext(DataContext)
 
   return (
-    <DataProvider>
+    <>
       <header>
         <img src={logo} alt="Logo" className='logo' />
       </header>
+
       <main>
         <SearchBar />
+        <Pagination next={info.next} prev={info.prev} onPrevious={onPrevious} onNext={onNext} />
         <div className="cards-container">
           {
-            items.map(card => <Card />)
+            data.length <= 0
+              ? <Loading />
+              : data.map(card => <Card key={card.id} data={card} />)
           }
         </div>
+        <Pagination next={info.next} prev={info.prev} onPrevious={onPrevious} onNext={onNext} />
       </main>
+
       <footer>
+
         <h3>Nahuel Fernandez Beschtedt</h3>
+
         <div className="social">
           <a href='https://www.linkedin.com/in/nahuel-fernandez-beschtedt/' target='_blank' rel="noopener noreferrer">
             <img className='social-icons' src={Linkedin} alt="LinkedIn" />
@@ -39,8 +55,9 @@ function App() {
             <img className='social-icons' src={WhatsApp} alt='WhatsApp' />
           </a>
         </div>
+
       </footer>
-    </DataProvider>
+    </>
   );
 }
 

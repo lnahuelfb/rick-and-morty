@@ -1,20 +1,20 @@
 import React from 'react'
-import test from '../images/pickle-rick.png'
 import '../styles/Card.css'
 
-export default function Card() {
+export default function Card({data}) {
   return (
     <div className='container'>
       <div className="img-container">
-        <img src={ test } alt="Pickle Rick" />
+        <img src={ data.image } alt={ data.name } />
       </div>
       <div className="character-data-container">
         <p>
-          <strong>Name:</strong> Pickle Rick. <br />
-          <strong>Status:</strong> Alive. <br />
-          <strong>Species:</strong> Human. <br />
-          <strong>Gender:</strong> Male. <br />
-          <strong>Location:</strong> Earth.
+          <strong>{data.name}</strong>
+          <hr/>
+          <strong>Species:</strong> {data.species} <br />
+          <strong>Location:</strong> {data.location.name} <br />
+          <strong>Gender:</strong> {data.gender} <br />
+          <strong>Status:</strong> {data.status} 
         </p>
       </div>
     </div>
