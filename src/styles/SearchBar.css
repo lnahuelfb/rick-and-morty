@@ -1,7 +1,7 @@
 .input {
   background-color: #2e3d4b;
   border: 0;
-  color: white;
+  color: #00F878;
   outline: none;
   height: 50px;
   width: 350px;
@@ -9,11 +9,11 @@
 }
 
 .input::placeholder {
-  color: whitesmoke;
+  color: #00F878;
 }
 
 .button {
-  color: white;
+  color: #00F878;
   height: 52px;
   width: 75px;
   background-color: #2e3d4b;
@@ -23,7 +23,7 @@
 }
 
 .button:hover {
-  background-color: white;
+  background-color: #00F878;
   color: #2e3d4b;
   cursor: pointer;
 }
