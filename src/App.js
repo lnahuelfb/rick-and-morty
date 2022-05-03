@@ -54,8 +54,9 @@ function App() {
       </main>
 
       <footer>
-
-        <h3>Nahuel Fernandez Beschtedt</h3>
+        <a href="https://porfolio-nahuelfb.vercel.app/" target='_blank' rel='noopener noreferrer'>
+          <h3>Nahuel Fernandez Beschtedt</h3>
+        </a>
 
         <div className="social">
           <a href='https://www.linkedin.com/in/nahuel-fernandez-beschtedt/' target='_blank' rel="noopener noreferrer">
