@@ -6,10 +6,16 @@
   height: 50px;
   width: 350px;
   padding: 0 20px;
+  border-right: solid 1px grey;
 }
 
 .input::placeholder {
   color: #00F878;
+}
+
+.input:focus {
+  border-right: 0;
+  border: 1px solid #00F878;
 }
 
 .button {
@@ -18,7 +24,7 @@
   width: 75px;
   background-color: #2e3d4b;
   border: 0;
-  border-left: solid 1px grey;
+
   padding: 0
 }
 
