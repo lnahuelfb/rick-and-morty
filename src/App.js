@@ -1,15 +1,15 @@
-import SearchBar from './components/SearchBar';
-import './App.css';
-import logo from './images/rick-and-morty.png'
 import { DataContext } from './context/DataContext';
 import { useContext } from 'react';
+
+import SearchBar from './components/SearchBar';
 import Card from './components/Card';
-import Linkedin from './images/linkedin.svg'
-import WhatsApp from './images/WhatsApp.svg'
-import GitHub from './images/github.svg'
 import Loading from './components/Loading';
 import Pagination from './components/Pagination';
 import NotFound from './components/NotFound';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+import './App.css';
 
 function App() {
 
@@ -20,11 +20,33 @@ function App() {
     onNext
   } = useContext(DataContext)
 
+  if (!data) {
+    return (
+      <>
+        <Header />
+        <main>
+          <NotFound />
+        </main>
+        <Footer />
+      </>
+    )
+  }
+
+  if (data.length <= 0) {
+    return (
+      <>
+        <Header/>
+        <main>
+          <Loading />
+        </main>
+        <Footer />
+      </>
+    )
+  }
+
   return (
     <>
-      <header>
-        <img src={logo} alt="Logo" className='logo' />
-      </header>
+      <Header/>
 
       <main>
         <SearchBar />
@@ -35,14 +57,7 @@ function App() {
         }
         <div className="cards-container">
           {
-            data
-              ? data.length < 0
-                ? <Loading />
-                : data.map(card => <Card key={card.id} data={card} />)
-              :
-              <>
-                <NotFound />
-              </>
+            data.map(card => <Card key={card.id} data={card} />)  
           }
         </div>
 
@@ -53,26 +68,7 @@ function App() {
         }
       </main>
 
-      <footer>
-        <a href="https://porfolio-nahuelfb.vercel.app/" target='_blank' rel='noopener noreferrer'>
-          <h3>Nahuel Fernandez Beschtedt</h3>
-        </a>
-
-        <div className="social">
-          <a href='https://www.linkedin.com/in/nahuel-fernandez-beschtedt/' target='_blank' rel="noopener noreferrer">
-            <img className='social-icons' src={Linkedin} alt="LinkedIn" />
-          </a>
-
-          <a href="https://github.com/lnahuelfb" target='_blank' rel="noopener noreferrer">
-            <img className='social-icons' src={GitHub} alt='GitHub' />
-          </a>
-
-          <a href="https://api.whatsapp.com/send?phone=541163783961" target='_blank' rel="noopener noreferrer">
-            <img className='social-icons' src={WhatsApp} alt='WhatsApp' />
-          </a>
-        </div>
-
-      </footer>
+      <Footer/>
     </>
   );
 }
