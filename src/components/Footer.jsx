@@ -7,7 +7,7 @@ import '../styles/Footer.css'
 export default function Footer() {
   return (
     <footer>
-    <a href="https://porfolio-nahuelfb.vercel.app/" target='_blank' rel='noopener noreferrer'>
+    <a href="https://nahuelfb.vercel.app/" target='_blank' rel='noopener noreferrer'>
       <h3>Nahuel Fernandez Beschtedt</h3>
     </a>
 
